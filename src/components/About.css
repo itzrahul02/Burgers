@@ -1,0 +1,43 @@
+*{
+    padding: 0;
+    margin:0;
+}
+.parallax-section {
+    background-image: url('../assets/background3.jpg'); /* Add your image path */
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: fit-content;
+    padding-bottom: 3rem;
+  }
+  .parallax-section2 {
+    position: relative; /* Ensure the pseudo-element is positioned correctly */
+    background-image: url('../assets/award2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    height: 95vh;
+    
+    z-index: 0; 
+  }
+  
+  .parallax-section2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.648); 
+    z-index: -1;
+  }
+  @media(max-width:640px){
+    .parallax-section{
+      height: fit-content
+    }
+    .parallax-section2{
+      height: fit-content
+    }
+  }
