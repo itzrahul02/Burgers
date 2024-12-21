@@ -1,8 +1,8 @@
-import card1 from "C:/Users/rahul/OneDrive/Desktop/Programs/Web Dev/React/practice/src/assets/card1.png";
-import card2 from "/Users/rahul/OneDrive/Desktop/Programs/Web Dev/React/practice/src/assets/card2.png";
-import card3 from "/Users/rahul/OneDrive/Desktop/Programs/Web Dev/React/practice/src/assets/card3.png";
-import card4 from "/Users/rahul/OneDrive/Desktop/Programs/Web Dev/React/practice/src/assets/card4.png";
-import card5 from "/Users/rahul/OneDrive/Desktop/Programs/Web Dev/React/practice/src/assets/card5.png";
+import card1 from "../assets/card1.png";
+import card2 from "../assets/card2.png";
+import card3 from "../assets/card3.png";
+import card4 from "../assets/card4.png";
+import card5 from "../assets/card5.png";
 
 const cards = [
   {
