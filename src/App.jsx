@@ -3,14 +3,14 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
-import Home from "./BurgerSite/components/Home";
-import Menu from "./BurgerSite/components/Menu";
-import About from "./BurgerSite/components/About";
-import { Cart } from './BurgerSite/components/ViewCart';
-import { CartProvider } from './BurgerSite/components/Context';
-import { Login } from './BurgerSite/components/login';
-import { Registration } from './BurgerSite/components/register';
-import Profile from './BurgerSite/components/Profile';
+import Home from "./components/Home";
+import Menu from "./components/Menu";
+import About from "./components/About";
+import { Cart } from './components/ViewCart';
+import { CartProvider } from './components/Context';
+import { Login } from './components/login';
+import { Registration } from './components/register';
+import Profile from './components/Profile';
 
 function App() {
   
@@ -21,8 +21,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<div>Contact</div>} />
-          <Route path="/blog" element={<div>Blog</div>} />
           <Route path="/order" element={<Menu />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/register" element={<Registration />} />

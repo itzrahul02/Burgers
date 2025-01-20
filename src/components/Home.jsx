@@ -108,7 +108,7 @@ function Home() {
               Desi Burgers and Meals
             </p>
             <div className="section mt-6 pb-4 sm:pb-8">
-              <div className="card flex flex-wrap items-center gap-2 sm:gap-4   justify-center">
+              <div className="card flex flex-wrap items-center gap-2 sm:gap-4 justify-center">
                 {cards.map((card, index) => (
                   <Link to="/order" key={index} className="sm:size-[15rem] hover:cursor-pointer hover:rounded-xl hover:bg-yellow-600/50 height-[10rem]">
                     <div className=" mb-4 sm:mb-8 flex flex-col justify-between">

@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faUser, faCartShopping, faClose, faPhone } from "@fortawesome/free-solid-svg-icons";
-import logo from '../assets/pngwing.com.png';
+import logo from './assets/pngwing.com.png';
 import {Link} from "react-router-dom"
 import { useState } from "react";
 import { cartContext } from "./components/Context";
@@ -42,7 +42,7 @@ function NavBar(props) {
         <div className="logoandtitle">
           <Link to="/" className="flex items-center justify-center gap-2 sm:gap-4 font-bold text-[2rem]">
           <img src={logo} alt="Logo" className="h-6 sm:h-10"/>
-          <h3 className="title text-[1.6rem] lg:text-[2rem]" style={{ fontFamily: 'Flame, sans-serif' }}>Burger King</h3> {/* Apply Flamenco font */}
+          <h3 className="title text-[1.6rem] lg:text-[2rem]" style={{ fontFamily: 'Flame, sans-serif' }}>Burger Site</h3> {/* Apply Flamenco font */}
           </Link>
         </div>
 
