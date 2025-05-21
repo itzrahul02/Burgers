@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import NavBar from "../Nav";
 import "./About.css";
-import Owner from "../assets/Bhargavee.jpeg";
+import Owner from "../assets/business-man.png";
 import Award from "../assets/trophy.png";
 import Footer from "./Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -65,7 +65,7 @@ function About() {
             <img
                 src={Owner}
                 alt="Founder"
-                className="h-[250px] sm:h-[300px] md:h-[400px] lg:h-[450px] w-full object-cover rounded-lg shadow-[0_4px_10px] shadow-black"
+                className="cursor-pointer h-[150px] sm:h-[200px] md:h-[250px] lg:h-[300px]  object-cover rounded-lg shadow-[0_4px_10px] shadow-white"
                 onClick={() => setOpen(true)}
             />
             </div>
@@ -118,15 +118,16 @@ function About() {
         />
       </div>
       <div className="text-black text-center">
-        <p className="font-bold text-lg">Bhargavee</p>
+        <p className="font-bold text-lg">Rahul</p>
         <p className="italic text-md">The Founder and CEO of The Company</p>
         <p className="mt-4">
-          Bhargavee is a visionary leader and the driving force behind the success of our company. With a passion for innovation and excellence, she has transformed the company into a global leader in the fast-food industry. Under her leadership, Burger King has continued to grow, delivering exceptional quality and customer satisfaction. Her commitment to delivering great food and building a strong, customer-first culture has made her a respected figure in the business world.
+          Rahul is a visionary leader and the driving force behind the success of our company. With a passion for innovation and excellence, she has transformed the company into a global leader in the fast-food industry. Under her leadership, Burger King has continued to grow, delivering exceptional quality and customer satisfaction. Her commitment to delivering great food and building a strong, customer-first culture has made her a respected figure in the business world.
         </p>
         <p className="mt-4">
-          As the Founder and CEO, Bhargavee's leadership continues to inspire and guide the company toward new heights, ensuring that we remain at the forefront of the industry while maintaining our core values of quality, affordability, and customer service.
+          As the Founder and CEO, Rahul's leadership continues to inspire and guide the company toward new heights, ensuring that we remain at the forefront of the industry while maintaining our core values of quality, affordability, and customer service.
         </p>
       </div>
+
     </div>
   </div>
 )}
