@@ -11,6 +11,7 @@ import { CartProvider } from './components/Context';
 import { Login } from './components/login';
 import { Registration } from './components/register';
 import Profile from './components/Profile';
+import PaymentSuccess from './components/PaymentSuccess';
 
 function App() {
   
@@ -26,6 +27,7 @@ function App() {
           <Route path="/register" element={<Registration />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile/>}/>
+          <Route path='/paymentsuccess' element={<PaymentSuccess/>}/>
         </Routes>
       </CartProvider>
       <ToastContainer />

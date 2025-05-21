@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { cartContext } from "./Context";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 export function Cart() {
     const navigate=useNavigate();
@@ -33,14 +34,55 @@ export function Cart() {
             navigate('/login')
         }
         else{
-            toast.success("Thanks for the Order")
-            navigate('/')
-            setCartItems([])
+            checkoutHandler()
+            
+            
+            
         }
     }
 
     function removeCard(id){
         setCartItems(cartItems.filter((each)=>each.id!==id))
+    }
+    async function checkoutHandler(){
+        try{
+            const {data:{key}} = await axios.get("http://localhost:3000/api/getkey")
+
+            const {data} = await axios.post("http://localhost:3000/api/checkout",{amount:total}) 
+            console.log("data is",data);
+            const options = {
+                key: key, // Enter the Key ID generated from the Dashboard
+                amount: data.order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                currency: "INR",
+                name: "Burger Seller",
+                description: "Test Transaction",
+                image: "https://example.com/your_logo",
+                order_id: data.order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                callback_url: "http://localhost:3000/api/paymentverification",
+                prefill: {
+                    name: "Rahul Sharma",
+                    email: "rahulbikker@gmail.com",
+                    contact: "8604400838"
+                },
+                notes: {
+                    "address": "Razorpay Corporate Office"
+                },
+                theme: {
+                    "color": "#3399cc"
+                }
+            };
+            var rzp1 = new window.Razorpay(options);
+            rzp1.on("payment.success",function(response){
+                window.location.href = `http://localhost:3000/paymentsuccess?reference=${response.razorpay_payment_id}`
+            })
+            rzp1.open()
+            
+            
+        }
+        catch(error){
+            console.log("payment error:",error);
+        }
+       
     }
     const total = cartItems.reduce((sum, each) => sum + each.price * quantities[each.id], 0);
     return (

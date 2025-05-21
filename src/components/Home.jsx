@@ -5,7 +5,6 @@ import image2 from "../assets/burger2.jpg";
 import image3 from "../assets/burger3.jpeg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import cards from "../data/CardData";
 import { Link } from "react-router-dom";
@@ -19,6 +18,7 @@ function Home() {
     deleteSpeed: 120,
     delaySpeed: 1000,
   });
+
   const images = [image1, image2, image3];
   const [move, setMove] = useState(0);
 
@@ -27,7 +27,7 @@ function Home() {
       const img = new Image();
       img.src = src; // Preload the image by setting the src
     });
-  }, [images]);
+  }, [images]); 
 
   const moveLeft = () => {
     setMove((prev) => (prev > 0 ? prev - 1 : images.length - 1));
@@ -58,8 +58,7 @@ function Home() {
                 className="template w-full h-full bg-cover bg-center"
                 style={{
                   backgroundImage: `url(${images[move]})`,
-                }}
-              >
+                }}>
                 <div
                   className="bg-black/50 w-[80%] md:w-[50%] h-full absolute right-0 text-white flex flex-col justify-center items-center p-4 md:p-8"
                   style={{ clipPath: "ellipse(100% 100% at 100% 0%)" }}
