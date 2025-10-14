@@ -14,7 +14,7 @@ const Profile = () => {
     console.log(document.cookie);
     try{
       console.log("Logging out...");
-      const response= await axios.post("http://localhost:3000/api/user/logout",{},
+      const response= await axios.post("https://burgers-y7t2.onrender.com//api/user/logout",{},
         {withCredentials:true}
       )
       if (response.data.success){ 
@@ -36,7 +36,7 @@ const Profile = () => {
   useEffect(() => {
     const profileDetails = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/user/profile", {
+        const response = await axios.get("https://burgers-y7t2.onrender.com//api/user/profile", {
           withCredentials: true
         });
         if (response.data.success) {

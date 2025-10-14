@@ -44,9 +44,9 @@ export function Cart() {
     }
     async function checkoutHandler(){
         try{
-            const {data:{key}} = await axios.get("http://localhost:3000/api/getkey")
+            const {data:{key}} = await axios.get("https://burgers-y7t2.onrender.com//api/getkey")
 
-            const {data} = await axios.post("http://localhost:3000/api/checkout",{amount:total}) 
+            const {data} = await axios.post("https://burgers-y7t2.onrender.com//api/checkout",{amount:total}) 
             console.log("data is",data);
             const options = {
                 key: key, // Enter the Key ID generated from the Dashboard
@@ -56,7 +56,7 @@ export function Cart() {
                 description: "Test Transaction",
                 image: "https://example.com/your_logo",
                 order_id: data.order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-                callback_url: "http://localhost:3000/api/paymentverification",
+                callback_url: "https://burgers-y7t2.onrender.com//api/paymentverification",
                 prefill: {
                     name: "Rahul Sharma",
                     email: "rahulbikker@gmail.com",
@@ -71,7 +71,7 @@ export function Cart() {
             };
             var rzp1 = new window.Razorpay(options);
             rzp1.on("payment.success",function(response){
-                window.location.href = `http://localhost:3000/paymentsuccess?reference=${response.razorpay_payment_id}`
+                window.location.href = `https://burgers-y7t2.onrender.com//paymentsuccess?reference=${response.razorpay_payment_id}`
             })
             rzp1.open()
             

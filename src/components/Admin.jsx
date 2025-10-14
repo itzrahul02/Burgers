@@ -26,7 +26,7 @@ export default function Admin() {
   formData.append("price", burger.price);
 
   try {
-    await axios.post("http://localhost:3000/api/burgers/addburger", formData, {
+    await axios.post("https://burgers-y7t2.onrender.com//api/burgers/addburger", formData, {
       headers: {
         "Content-Type": "multipart/form-data",
         // "Authorization": `Bearer ${yourToken}` if you are using authentication

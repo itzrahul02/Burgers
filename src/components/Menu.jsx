@@ -27,7 +27,7 @@ function Menu() {
   useEffect(() => {
     const handleBurgerData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/burgers/getBurgerData"); 
+        const response = await axios.get("https://burgers-y7t2.onrender.com//api/burgers/getBurgerData"); 
         const data = response.data.data; 
         console.log("Fetched Burgers:", data); 
         const indexData=data.map((item,index)=>({ 
