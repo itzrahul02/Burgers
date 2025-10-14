@@ -1,5 +1,5 @@
 const { models } = require("mongoose");
-const { instance } = require("../razorpay.js"); // Fix import
+const { instance } = require("../utils/razorpay.js"); // Fix import
 const crypto = require("crypto")
 const {Payment} = require("../models/paymentModel.js")
 const checkout = async (req, res) => {

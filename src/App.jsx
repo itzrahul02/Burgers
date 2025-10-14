@@ -6,6 +6,7 @@ import './index.css';
 import Home from "./components/Home";
 import Menu from "./components/Menu";
 import About from "./components/About";
+import Admin from "./components/Admin";
 import { Cart } from './components/ViewCart';
 import { CartProvider } from './components/Context';
 import { Login } from './components/login';
@@ -28,6 +29,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile/>}/>
           <Route path='/paymentsuccess' element={<PaymentSuccess/>}/>
+          <Route path="/admin" element={<Admin />} />
+          {/* Add more routes as needed */}
         </Routes>
       </CartProvider>
       <ToastContainer />

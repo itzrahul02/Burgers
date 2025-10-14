@@ -3,10 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState,useContext } from "react";
 import NavBar from "../Nav";
 import { Link, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
-import { auth } from "../firebase";
 import { cartContext } from "./Context";
+import axios from "axios";
 
 export function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -20,16 +19,33 @@ export function Login() {
     e.preventDefault();
     setLoading(true); // Set loading to true
 
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      toast.success("Logged in successfully!");
-      setIsLoggedIn(true);
-      navigate("/");
-    } catch (error) {
-      console.error("Error", error);
-      toast.error("Login failed. Please check your credentials.");
-    } finally {
-      setLoading(false); // Set loading to false
+    try{
+      if (!email||!password){
+        console.log("Wrong credentials");
+        toast.error("Wrong Credentials")
+        setLoading(false); // Reset loading state on error
+        return
+        
+      }
+      const response = await axios.post(
+          "http://localhost:3000/api/user/login"
+          ,{email,password},
+        {withCredentials:true})
+        if (response.data.success){
+          toast.success("Login successful")
+          setIsLoggedIn(true); // Update context state
+          console.log("Login successful", response.data);
+          localStorage.setItem("user", JSON.stringify(response.data.data));
+          navigate("/")  
+        } 
+        else{
+          toast.error(response.data.message||"Login failed")
+        }
+    }
+    catch(err){
+      console.log("Error during login",err);
+      toast.error("Login failed. Please try again.");
+      setLoading(false); // Reset loading state on error
     }
   };
 
@@ -38,11 +54,7 @@ export function Login() {
       <NavBar />
       <div className="bg-yellow-400 min-h-screen h-full pb-[2rem] pt-[5rem] flex flex-col items-center justify-center">
         <div className="flex flex-col justify-center items-center w-[90%] sm:w-[70%] md:w-[40%] lg:w-[30%] space-y-[1rem] bg-white p-[2rem] rounded-xl shadow-lg">
-          <img
-            src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-            alt="profile pic"
-            className="rounded-full border-4 w-[6rem] h-[6rem] border-black/50"
-          />
+          
           <div className="w-full border-2 rounded-lg border-black/70 bg-slate-300/80 p-2">
             <input
               type="email"
@@ -61,6 +73,8 @@ export function Login() {
               className="bg-[#D5DDE7] outline-none w-full"
               placeholder="Password"
               aria-label="Password"
+              onKeyDown={(e)=>{
+                if (e.key==="Enter") handleLogin(e)}}
             />
             <FontAwesomeIcon
               icon={showPassword ? faEyeSlash : faEye}

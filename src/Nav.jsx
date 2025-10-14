@@ -16,12 +16,16 @@ const nav = [
   },{
     name : "About",
     dir :"/about"
+  },{
+    name:"Profile",
+    dir:'/profile'
   }
 ]
 
 function NavBar(props) {
   const [menu,setMenu] = useState(true)
-  const { isLoggedIn }= useContext(cartContext);
+  const {loginCheck,avatar }= useContext(cartContext);
+
   return (
     <>
     <nav className="shadow-custom-shadow fixed w-full top-0 z-20">
@@ -49,9 +53,9 @@ function NavBar(props) {
         {/* User and Cart Icons */}
         <div className="flex items-center justify-between gap-2 sm:gap-4">
           <div className="">
-            {isLoggedIn?(
+            {loginCheck()?(
               <Link to="/profile">
-              <FontAwesomeIcon icon={faUser} className="hover:scale-110 transition-transform duration-200 sm:text-[1.5rem] " />
+              <img src={avatar} className="w-[50px] rounded-full h-[50px] hover:scale-110 transition-transform duration-200 sm:text-[1.5rem] " />
             </Link>
             ):
             (

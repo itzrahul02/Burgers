@@ -6,10 +6,21 @@ export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
   const [quantities, setQuantities] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [avatar,setAvatar]=useState(null);
 
   // Add or update items in the cart
+  function loginCheck() {
+  const data= localStorage.getItem("user");
+  if(data){
+    return true
+  }
+  return false;
+}
+
   function additems(item) {
+    console.log(item);
     setCartItems((prevItems) => {
+      console.log(prevItems);
       const existingItemIndex = prevItems.findIndex((cartItem) => cartItem.id === item.id);
 
       if (existingItemIndex !== -1) {
@@ -28,7 +39,7 @@ export function CartProvider({ children }) {
       ...prevQuantities,
       [item.id]: (prevQuantities[item.id] || 0) + item.quantity,
     }));
-  }
+  } 
 
   // Update the quantity of an existing item in the cart
   function updateQuantity(id, increment) {
@@ -46,14 +57,17 @@ export function CartProvider({ children }) {
 
   // Remove an item from the cart
   function removeItem(id) {
+    console.log("Remove call");
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
+
     setQuantities((prevQuantities) => {
       const newQuantities = { ...prevQuantities };
+      console.log(newQuantities);
       delete newQuantities[id];
       return newQuantities;
     });
   }
-
+  console.log("cartitems in context",cartItems);
   return (
     <cartContext.Provider
       value={{
@@ -65,6 +79,9 @@ export function CartProvider({ children }) {
         setCartItems,
         isLoggedIn,
         setIsLoggedIn,
+        loginCheck,
+        setAvatar,
+        avatar
       }}
     >
       {children}
