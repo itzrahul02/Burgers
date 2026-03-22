@@ -53,7 +53,7 @@ export function Registration() {
       if (avatar) formData.append("avatar", avatar);
 
       const response = await axios.post(
-        "https://burgers-y7t2.onrender.com//api/user/register",
+        "http://localhost:3000/api/user/register",
         formData,
         {
           headers: {

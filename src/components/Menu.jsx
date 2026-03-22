@@ -14,20 +14,18 @@ function Menu() {
   const [nonvegitems,setNonvegitems] = useState([])
   const [selectedItem,setSelectedItem]=useState(null)
 
-  // Add item to cart with quantity 1
   function handleAddItem(item) {
     console.log("What is am sending",item);
     additems({ ...item, quantity: 1 });
   }
 
-  // Update the quantity of an item
   function handleUpdateQuantity(id, increment) {
     updateQuantity(id, increment);
   }
   useEffect(() => {
     const handleBurgerData = async () => {
       try {
-        const response = await axios.get("https://burgers-y7t2.onrender.com//api/burgers/getBurgerData"); 
+        const response = await axios.get("http://localhost:3000/api/burgers/getBurgerData"); 
         const data = response.data.data; 
         console.log("Fetched Burgers:", data); 
         const indexData=data.map((item,index)=>({ 

@@ -14,7 +14,8 @@ const app = express();
 // Middleware to parse JSON request bodies
 app.use(cors(
     {
-        origin: "https://burgers-jlne.vercel.app/", // Adjust this to your frontend URL
+        origin: "http://localhost:5173",
+        // origin: "https://burgers-jlne.vercel.app", // Adjust this to your frontend URL
         credentials: true, // Allow cookies to be sent with requests
     }
 ));
