@@ -1,0 +1,53 @@
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './index.css';
+import Home from "./components/Home";
+import Menu from "./components/Menu";
+import About from "./components/About";
+import Admin from "./components/Admin";
+import { Cart } from './components/ViewCart';
+import { CartProvider } from './components/Context';
+import { Login } from './components/login';
+import { Registration } from './components/register';
+import Profile from './components/Profile';
+import PaymentSuccess from './components/PaymentSuccess';
+import Orders from './components/Orders';
+import { AnimatePresence } from 'framer-motion';
+
+function App() {
+  return (
+    <React.StrictMode>
+      <Router>
+        <CartProvider>
+          <AnimatePresence mode="wait">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/order" element={<Menu />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/register" element={<Registration />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/orders" element={<Orders />} />
+              <Route path="/paymentsuccess" element={<PaymentSuccess />} />
+              <Route path="/admin" element={<Admin />} />
+            </Routes>
+          </AnimatePresence>
+        </CartProvider>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          pauseOnHover
+          theme="dark"
+        />
+      </Router>
+    </React.StrictMode>
+  );
+}
+
+export default App;

@@ -1,0 +1,32 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/burgers-test
+    redis:
+      host: localhost
+      port: 6379
+
+jwt:
+  access-token:
+    secret: test-access-secret-key-must-be-at-least-256-bits-long-for-testing
+    expiration: 900000
+  refresh-token:
+    secret: test-refresh-secret-key-must-be-at-least-256-bits-long-for-testing
+    expiration: 604800000
+
+cloudinary:
+  cloud-name: test
+  api-key: test
+  api-secret: test
+
+razorpay:
+  api-key: test
+  api-secret: test
+
+rate-limit:
+  requests-per-minute: 1000
+
+app:
+  cors:
+    allowed-origins: http://localhost:5173
+  frontend-url: http://localhost:5173
