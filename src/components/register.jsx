@@ -70,7 +70,7 @@ export function Registration() {
       }
     } catch (error) {
       console.error("Error during registration:", error.message);
-      toast.error("Registration failed. Please try again.");
+      toast.error(error.message);
     }
   };
   

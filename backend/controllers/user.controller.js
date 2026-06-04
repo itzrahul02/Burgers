@@ -11,6 +11,7 @@ const { redirect } = require("react-router-dom");
 
 const registerUser = async(req,res)=>{
     const {name,username,email,password,phone,address}=req.body
+
     if (!name || !username || !email || !password ){
         return res.status(400).json(
             {
@@ -21,10 +22,11 @@ const registerUser = async(req,res)=>{
         )
     }
     try{
-        console.log("entered");
+        console.log(`Doing Registration with ${email} and ${username}`);
         const existingUser = await User.findOne({
             $or:[{username},{email}]
     })
+    console.log(`ExistingUser ${existingUser}`);
         if (existingUser){
             return res.status(400).json({
                 message:"User already exists",

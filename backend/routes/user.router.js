@@ -6,7 +6,7 @@ const auth = require("../middleware/auth.middleware.js")
 
 userRouter.post("/register",
     upload.single("avatar"),
-    registerUser)
+    registerUser) 
 userRouter.post("/login",login)
 userRouter.get("/avatar",auth,returnAvatar)
 userRouter.get("/profile",auth,profileDetails)
